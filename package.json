@@ -1,0 +1,19 @@
+{
+  "name": "node-module-editor",
+  "version": "0.0.0",
+  "description": "Editor for node modules",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nathan Caza",
+  "license": "ISC",
+  "dependencies": {
+    "q": "~1.0.0",
+    "dustjs-linkedin": "~2.3.3",
+    "lodash": "~2.4.1",
+    "less": "~1.6.3",
+    "rimraf": "~2.2.6",
+    "mkdirp": "~0.3.5"
+  }
+}
