@@ -1,9 +1,27 @@
 <html>
 <head>
 	<title>Node Module Editor</title>
+
+
+	<script src="vendor/ace/ace.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap-theme.css">
+
+	<link rel="stylesheet/less" type="text/css" href="main.less">
+
+	<script src="node_modules/less/dist/less-1.6.3.js"></script>
+
+	<script src="vendor/bootstrap/js/bootstrap.js"></script>
+
 </head>
 <body>
-	<div id="editor"></div>
-	<script src="index.js"></script>
+	<div class="workspace">
+			<div id="browser"></div>
+			<div id="editor-wrapper">
+				<div id="editor"></div>
+			</div>
+	</div>
+	<script src="main.js"></script>
 </body>
 </html>
