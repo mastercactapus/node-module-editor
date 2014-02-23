@@ -1,0 +1,63 @@
+
+@indent: 0.3em;
+
+.css-file-browser {
+    -webkit-user-select: none;
+    user-select: none;
+    ul,li {
+        list-style: none;
+        padding-left: @indent;
+    }
+    
+    input {
+        display: none;
+
+        ~ ul {
+            display: none;
+        }
+        &:checked ~ ul {
+            display: block;
+        }
+    }
+
+    label {
+        border: 2px solid transparent;
+        border-radius: 3px;
+        margin: 0;
+        cursor: hand;
+        display: block;
+
+        &:hover {
+            background: #444;
+        }
+
+        &::before {
+            content: ">";
+            padding-right: @indent; 
+        }
+
+        input:checked + &::before {
+            content: "v";
+        }
+    }
+
+    a {
+        border: 2px solid transparent;
+        border-radius: 3px;
+        color: #ccc;
+        text-decoration: none;
+        padding-left: @indent;
+        display: block;
+
+        &:hover {
+            text-decoration: none;
+            background: #444;
+        }
+    }
+
+    .empty {
+        color: #666;
+        font-style: italic;
+        margin: 0;
+    }
+}

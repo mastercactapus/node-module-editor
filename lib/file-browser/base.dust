@@ -1,0 +1,27 @@
+{<item}
+<li data-id="{id}">
+	{?.directory}
+		
+			<input type="checkbox" id="file-browser-{id}" {?active}checked="checked"{/active}>
+		<label for="file-browser-{id}">
+			{basename}
+		</label>
+		<ul>
+			{#.contents}
+				{+"item" /}
+			{:else}
+				<li><p class="empty">(Empty)</p></li>
+			{/contents}
+		</ul>
+	{:else}
+		<a href="#" title="{basename}">{basename}</a>
+	{/directory}
+</li>
+{/item}
+
+<ul>
+	{#contents}
+		{+"item"/}
+	{/contents}
+</ul>
+
