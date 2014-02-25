@@ -1,8 +1,8 @@
 {<item}
-<li data-id="{id}" data-path="{path}">
+<li data-id="{id}">
 	{?.directory}
 		
-			<input type="checkbox" id="file-browser-{id}" {?active}checked="checked"{/active}>
+			<input type="checkbox" id="file-browser-{id}" {?.active}checked="checked"{/active}>
 		<label for="file-browser-{id}">
 			{basename}
 		</label>
