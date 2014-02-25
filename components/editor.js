@@ -16,6 +16,10 @@ state.files = {};
 
 var currentFile;
 
+editor.on("change", function(evt){
+	core.events.emit("file-changed", filename);
+});
+
 core.events.on("set-file", function(filename){
 	currentFile = filename;
 	if (!state.files[filename]) {
@@ -28,6 +32,7 @@ core.events.on("save-file", function(){
 	var data = editor.getValue();
 	var file = state.files[currentFile];
 	fs.writeFileSync(currentFile, data);
+	core.events.emit("file-saved", filename);
 });
 
 function createSession(filename) {
