@@ -30,6 +30,9 @@ core.events.on("set-dir", function(dirname) {
 		//this api seems inconsistant, and inaccurate most of the time
 		if (fs.existsSync(filename)) {
 			filesCollection.add(scanner.file(dirname, filename), {merge: true});
+			if (fs.statSync(filename).isFile()) {
+				core.events.emit("file-changed-on-disk", filename);
+			}
 		} else {
 			filesCollection.remove({id: filename});
 		}
