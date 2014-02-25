@@ -26,7 +26,7 @@ core.events.on("set-file", function(filename){
 });
 core.events.on("save-file", function(){
 	var data = editor.getValue();
-	var file = stat.files[currentFile];
+	var file = state.files[currentFile];
 	fs.writeFileSync(currentFile, data);
 });
 
