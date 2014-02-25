@@ -16,7 +16,7 @@ var currentFile;
 core.events.on("set-file", function(file){
 	ignoreChanges = true;
 	currentFile = file;
-	editor.setValue(file.data);
+	editor.setValue(file.data, -1);
 	editor.getSession().setMode(file.type.mode);
 	ignoreChanges = false;
 });
@@ -29,5 +29,5 @@ function onChange(evt) {
 	if (ignoreChanges) return;
 
 	core.events.emit("editor-change", evt);
-	file.data = editor.getValue();
+	currentFile.data = editor.getValue();
 }

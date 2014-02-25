@@ -11,9 +11,9 @@ if (require.extensions) {
         module.exports = tmpl;
         module.exports.render = function(context) {
             return Q.nfcall(dust.render, filename, context);
-        }
+        };
         module.exports.stream = function(context) {
             return Q.nfcall(dust.stream, filename, context);
-        }
+        };
     };
 }
