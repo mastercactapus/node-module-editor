@@ -14,7 +14,7 @@ modeList = modeList.exports;
 
 var files = {};
 
-core.events.on("load-file", function(filename, filepath){
+core.events.on("-load-file", function(filename, filepath){
 	if (!files[filename]) {
 		var file = files[filename] = {
 			path: filepath,
@@ -29,7 +29,7 @@ core.events.on("load-file", function(filename, filepath){
 	setFile(files[filename]);
 });
 
-core.events.on("write-file", function(file){
+core.events.on("-write-file", function(file){
 	if (file.transform) return;
 
 	fs.writeFileSync(file.path, file.data);

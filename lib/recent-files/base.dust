@@ -1,0 +1,11 @@
+<div class="current-file">{current.basename}</div>
+
+<div class="file-list">
+	<hr>
+	Recent Files:
+	<ul>
+		{#files}
+			<li data-filename="{filename}"><a href="file:///{filename}" title="{filename}">{basename}</a></li>
+		{/files}
+	</ul>
+</div>

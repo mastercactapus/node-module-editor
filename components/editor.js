@@ -1,33 +1,40 @@
 var core = require("../lib/core");
+var fs = require("fs");
 
 var state = exports;
 var ace = window.ace;
 
 //init editor
 var editor = ace.edit("editor");
+var modelist = ace.require("ace/ext/modelist");
+
 editor.setTheme("ace/theme/monokai");
 editor.getSession().setMode("ace/mode/javascript");
 
 state.editor = editor;
+state.files = {};
 
-var ignoreChanges = true;
 var currentFile;
 
-core.events.on("set-file", function(file){
-	ignoreChanges = true;
-	currentFile = file;
-	editor.setValue(file.data, -1);
-	editor.getSession().setMode(file.type.mode);
-	ignoreChanges = false;
+core.events.on("set-file", function(filename){
+	currentFile = filename;
+	if (!state.files[filename]) {
+		state.files[filename] = createSession(filename);
+	}
+	editor.setSession(state.files[filename].editSession);
+	editor.focus();
 });
 core.events.on("save-file", function(){
-	core.events.emit("write-file", currentFile);
+	var data = editor.getValue();
+	var file = stat.files[currentFile];
+	fs.writeFileSync(currentFile, data);
 });
 
-editor.getSession().on("change", onChange);
-function onChange(evt) {
-	if (ignoreChanges) return;
+function createSession(filename) {
+	var file = {};
+	file.data = fs.readFileSync(filename);
+	file.editSession = ace.createEditSession(file.data.toString(), modelist.getModeForPath(filename).mode);
+	file.editSession.setUseWrapMode(true);
 
-	core.events.emit("editor-change", evt);
-	currentFile.data = editor.getValue();
+	return file;
 }

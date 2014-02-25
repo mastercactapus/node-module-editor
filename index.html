@@ -4,6 +4,8 @@
 
 
 	<script src="vendor/ace/ace.js"></script>
+	<script src="vendor/ace/ext-modelist.js"></script>
+
 
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap-theme.css">
@@ -16,13 +18,16 @@
 
 </head>
 <body>
-	<div class="workspace">
+	<div id="workspace">
 		<div id="browse-pane">
 			<div id="browse-bar"></div>
 			<div id="browser"></div>
 		</div>
 		<div id="edit-pane">
-			<div id="file-bar">WOOT</div>
+			<div id="file-bar">
+				<div id="recent-files"></div>
+				<div id="file-tabs"></div>
+			</div>
 			<div id="editor"></div>
 			<div id="edit-bar">WOOOOT</div>
 		</div>

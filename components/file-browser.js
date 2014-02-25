@@ -14,8 +14,8 @@ var filesView = new FileBrowserView({collection: filesCollection});
 $("#browser").html(filesView.$el);
 
 
-filesView.on("file_clicked", function(file, filepath){
-	core.events.emit("load-file", file, filepath);
+filesView.on("file_clicked", function(filepath){
+	core.events.emit("set-file", filepath);
 });
 
 var watchers = {};

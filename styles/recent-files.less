@@ -1,0 +1,44 @@
+
+#recent-files {
+	cursor: default;
+	background: black;
+
+	.recent-files {
+		padding: 0.5em;
+		background: black;
+	}
+
+	.file-list {
+		display: none;
+	}
+
+	&:hover .file-list {
+		display: block;
+	}
+
+	hr {
+		margin:1em;
+	}
+
+	ul,li {
+		list-style: none;
+		padding-left: 0.5em;
+	}
+	li {
+		cursor: hand;
+		padding: 2px;
+		border-radius: 3px;
+	}
+	a {
+		text-decoration: none;
+		color: #ccc;
+		display: block;
+	}
+	a:hover {
+		text-decoration: none;
+	}
+	li:hover {
+		background: #666;
+	}
+}
+
