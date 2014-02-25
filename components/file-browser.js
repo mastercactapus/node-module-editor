@@ -11,8 +11,8 @@ var filesView = new FileBrowserView({collection: filesCollection});
 $("#browser").html(filesView.$el);
 
 
-filesView.on("file_clicked", function(file){
-	core.events.emit("load-file", file);
+filesView.on("file_clicked", function(file, filepath){
+	core.events.emit("load-file", file, filepath);
 });
 
 //core events we care about

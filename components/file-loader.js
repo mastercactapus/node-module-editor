@@ -14,11 +14,12 @@ modeList = modeList.exports;
 
 var files = {};
 
-core.events.on("load-file", function(filename){
+core.events.on("load-file", function(filename, filepath){
 	if (!files[filename]) {
 		var file = files[filename] = {
+			path: filepath,
 			type: modeList.getModeForPath(filename),
-			rawData: fs.readFileSync(filename),
+			rawData: fs.readFileSync(filepath),
 			filename: filename
 		};
 
