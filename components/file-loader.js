@@ -32,7 +32,7 @@ core.events.on("load-file", function(filename, filepath){
 core.events.on("write-file", function(file){
 	if (file.transform) return;
 
-	fs.writeFileSync(file.filename, file.data);
+	fs.writeFileSync(file.path, file.data);
 });
 
 
