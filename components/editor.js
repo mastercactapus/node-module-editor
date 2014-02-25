@@ -10,8 +10,24 @@ editor.getSession().setMode("ace/mode/javascript");
 
 state.editor = editor;
 
-core.events.on("set-file", function(name, data, type){
-	editor.setValue(data.toString());
-	editor.getSession().setMode("ace/mode/" + type);
+var ignoreChanges = true;
+var currentFile;
+
+core.events.on("set-file", function(file){
+	ignoreChanges = true;
+	currentFile = file;
+	editor.setValue(file.data);
+	editor.getSession().setMode(file.type.mode);
+	ignoreChanges = false;
+});
+core.events.on("save-file", function(){
+	core.events.emit("write-file", currentFile);
 });
 
+editor.getSession().on("change", onChange);
+function onChange(evt) {
+	if (ignoreChanges) return;
+
+	core.events.emit("editor-change", evt);
+	file.data = editor.getValue();
+}

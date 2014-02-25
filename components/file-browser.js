@@ -18,5 +18,6 @@ filesView.on("file_clicked", function(file){
 //core events we care about
 core.events.on("set-dir", function(dirname) {
 	var files = scanner.scan(dirname);
+
 	filesCollection.set(files);
 });
