@@ -17,7 +17,7 @@ state.files = {};
 var currentFile;
 
 editor.on("change", function(evt){
-	core.events.emit("file-changed", filename);
+	core.events.emit("file-changed", currentFile);
 });
 
 core.events.on("set-file", function(filename){
@@ -32,7 +32,7 @@ core.events.on("save-file", function(){
 	var data = editor.getValue();
 	var file = state.files[currentFile];
 	fs.writeFileSync(currentFile, data);
-	core.events.emit("file-saved", filename);
+	core.events.emit("file-saved", currentFile);
 });
 
 function createSession(filename) {
