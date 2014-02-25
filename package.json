@@ -9,7 +9,7 @@
   "author": "Nathan Caza",
   "license": "ISC",
   "dependencies": {
-    "q": "~1.0.0",
+    "q": "~1.x",
     "dustjs-linkedin": "~2.3.3",
     "lodash": "~2.4.1",
     "less": "~1.6.3",

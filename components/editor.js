@@ -1,5 +1,6 @@
 var core = require("../lib/core");
 var fs = require("fs");
+var yaml = require("js-yaml");
 
 var state = exports;
 var ace = window.ace;
@@ -31,6 +32,9 @@ core.events.on("set-file", function(filename){
 core.events.on("save-file", function(){
 	var data = editor.getValue();
 	var file = state.files[currentFile];
+	if (file.transform) {
+		data = file.transform.write(data);
+	}
 	fs.writeFileSync(currentFile, data);
 	core.events.emit("file-saved", currentFile);
 });
@@ -38,8 +42,35 @@ core.events.on("save-file", function(){
 function createSession(filename) {
 	var file = {};
 	file.data = fs.readFileSync(filename);
-	file.editSession = ace.createEditSession(file.data.toString(), modelist.getModeForPath(filename).mode);
+	file.mode = modelist.getModeForPath(filename);
+
+	if (transforms[file.mode.name]) {
+		file.transform = transforms[file.mode.name];
+		file.data = file.transform.read(file.data);
+		file.mode = file.transform.mode;
+	}
+
+	file.editSession = ace.createEditSession(file.data.toString(), file.mode.mode);
 	file.editSession.setUseWrapMode(true);
+
 
 	return file;
 }
+
+var transforms = {
+	json: {
+		mode: modelist.getModeForPath("transform.yaml"),
+		read: function(data) {
+			//should store orig file formatting data
+			
+			var jsonData = JSON.parse(data);
+			return yaml.safeDump(jsonData,{
+				indent: 4
+			});
+		},
+		write: function(data) {
+			var yamlData = yaml.safeLoad(data);
+			return JSON.stringify(yamlData, null, "  ") + "\n";
+		}
+	}
+};
