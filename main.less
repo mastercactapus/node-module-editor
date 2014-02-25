@@ -4,24 +4,90 @@ body {
 	font: normal 11px "Cantarell", Arial, Sans-serif;
 	color: #eee;
 }
+@sidebarWidth: 15em;
+@barHeight: 2em;
 
-#browser {
-	float: left;
-	height: 100%;
-	width: 15em;
+#browse-pane {
+	position:absolute;
+	width: @sidebarWidth;
 }
-#editor-wrapper {
-	overflow: hidden;
-	height: 100%;
+#edit-pane {
+	position: absolute;
+	left: @sidebarWidth;
+	top:0;
+	right:0;
+	bottom:0;
+	background: red;
+}
+
+#browse-bar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: @barHeight;
+}
+#browser {
+	position: absolute;
+	top: @barHeight;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding-right: 1em;
+}
+#file-bar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: @barHeight;
 }
 #editor {
-	height: 100%;
-	width: 100%;
+	position: absolute;
+	left:0;
+	right:0;
+	top: @barHeight;
+	bottom: @barHeight;
+}
+#edit-bar {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: @barHeight;
 }
 
-.workspace {
-	padding:0;
-	margin:0;
-	white-space: nowrap;
-	width:100%;
-}
+
+// #browser {
+// 	float: left;
+// 	height: 100%;
+// 	width: @sidebarWidth;
+// }
+// #edit-pane {
+// 	overflow: hidden;
+// 	height: 100%;
+// }
+// #editor {
+// 	position: absolute;
+// 	top:1.5em;
+// 	bottom: 1.5em;
+// 	left:15em;
+// 	right:0;
+// }
+
+// #top-bar {
+// 	height: 1.5em;
+// 	background: black;
+// 	border: 1px solid white;
+// }
+// #bottom-bar {
+// 	height: 1.5em;
+// 	background: black;
+// 	border: 1px solid white;
+// }
+
+// .workspace {
+// 	padding:0;
+// 	margin:0;
+// 	white-space: nowrap;
+// 	width:100%;
+// }
