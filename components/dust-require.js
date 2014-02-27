@@ -1,4 +1,5 @@
 var dust = require("dustjs-linkedin");
+require("dustjs-helpers");
 var fs = require("fs");
 var Q = require("q");
 

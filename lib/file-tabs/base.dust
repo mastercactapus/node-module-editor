@@ -1,0 +1,14 @@
+<ul>
+
+{#.}
+	<li class="{?active}active{/active}" data-id="{id}">
+		<div class="tab-label {?changed}changed{/changed}">
+		{.basename}
+		</div>
+		{?pinned}
+			<div class="unpin">X</div>
+		{/pinned}
+	</li>
+{/.}
+
+</ul>
